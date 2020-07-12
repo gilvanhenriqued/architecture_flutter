@@ -1,3 +1,4 @@
+import 'package:architecture_flutter/app/models/appconfig_model.dart';
 import 'package:flutter/widgets.dart';
 
 class AppController {
@@ -6,10 +7,13 @@ class AppController {
 
   AppController._();
 
-  final themeSwitch = ValueNotifier<bool>(false);
+  final AppConfigModel config = AppConfigModel();
+
+  bool get isDark => config.themeSwitch.value;
+  ValueNotifier<bool> get themeSwitch => config.themeSwitch;
   
   changeTheme(bool value) {
-    themeSwitch.value = value;
+    config.themeSwitch.value = value;
   }
 
 }
